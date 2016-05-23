@@ -1,12 +1,9 @@
 // Copyright 2012-2013 Apcera Inc. All rights reserved.
 
-package termtables
+package tablewriter
 
 import (
 	"strings"
-
-	"github.com/apcera/termtables/locale"
-	"github.com/apcera/termtables/term"
 )
 
 // MaxColumns represents the maximum number of columns that are available for
@@ -75,15 +72,6 @@ func SetModeMarkdown(onoff bool) {
 	chooseDefaultOutput()
 }
 
-// EnableUTF8PerLocale will use current locale character map information to
-// determine if UTF-8 is expected and, if so, is equivalent to EnableUTF8.
-func EnableUTF8PerLocale() {
-	charmap := locale.GetCharmap()
-	if strings.EqualFold(charmap, "UTF-8") {
-		EnableUTF8()
-	}
-}
-
 // SetHTMLStyleTitle lets an HTML title output mode be chosen.
 func SetHTMLStyleTitle(want titleStyle) {
 	outputsEnabled.titleStyle = want
@@ -101,14 +89,6 @@ func chooseDefaultOutput() {
 		defaultOutputMode = outputMarkdown
 	} else {
 		defaultOutputMode = outputTerminal
-	}
-}
-
-func init() {
-	// do not enable UTF-8 per locale by default, breaks tests
-	sz, err := term.GetSize()
-	if err == nil && sz.Columns != 0 {
-		MaxColumns = sz.Columns
 	}
 }
 
@@ -193,7 +173,7 @@ func (t *Table) SetModeTerminal() {
 }
 
 // SetHTMLStyleTitle lets an HTML output mode be chosen; we should rework this
-// into a more generic and extensible API as we clean up termtables
+// into a more generic and extensible API as we clean up tablewriter
 func (t *Table) SetHTMLStyleTitle(want titleStyle) {
 	t.Style.htmlRules.title = want
 }

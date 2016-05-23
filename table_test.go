@@ -1,5 +1,5 @@
 // Copyright 2012-2013 Apcera Inc. All rights reserved.
-package termtables
+package tablewriter
 
 import (
 	"testing"

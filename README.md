@@ -1,27 +1,19 @@
-# Termtables
+# Tablewriter
 
-[![Build Status](https://travis-ci.org/apcera/termtables.svg?branch=master)](https://travis-ci.org/apcera/termtables)
+This is a legit fork of [apcera/termtables](https://github.com/apcera/termtables). This version is portable
+and does not rely on platform-dependent stuff like locale and term info.
 
-A [Go](http://golang.org) port of the Ruby library [terminal-tables](https://github.com/visionmedia/terminal-table) for
-fast and simple ASCII table generation.
+A [Go](http://golang.org) port of the Ruby library [terminal-tables](https://github.com/visionmedia/terminal-table) for fast and simple ASCII table generation.
 
 ## Installation
 
 ```bash
-go get github.com/apcera/termtables
+go get github.com/xlab/tablewriter
 ```
 
 ## Go Style Documentation
 
-[http://godoc.org/github.com/apcera/termtables](http://godoc.org/github.com/apcera/termtables)
-
-## APC Command Line usage
-
-`--markdown` — output a markdown table, e.g. `apc app list --markdown`
-
-`--html` — output an html table, e.g. `apc app list --html`
-
-`--ascii` — output an ascii table, e.g. `apc app list --ascii`
+[http://godoc.org/github.com/xlab/tablewriter](http://godoc.org/github.com/xlab/tablewriter)
 
 ## Basic Usage
 
@@ -30,7 +22,7 @@ package main
 
 import (
   "fmt"
-  "github.com/apcera/termtables"
+  "github.com/xlab/tablewriter"
 )
 
 func main() {
@@ -61,11 +53,6 @@ Result:
 
 The package function-call `EnableUTF8()` will cause any tables created after
 that point to use Unicode box-drawing characters for the table lines.
-
-Calling `EnableUTF8PerLocale()` uses the C library's locale functionality to
-determine if the current locale environment variables say that the current
-character map is UTF-8.  If, and only if, so, then `EnableUTF8()` will be
-called.
 
 Calling `SetModeHTML(true)` will cause any tables created after that point
 to be emitted in HTML, while `SetModeMarkdown(true)` will trigger Markdown.
