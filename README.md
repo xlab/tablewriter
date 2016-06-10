@@ -26,7 +26,7 @@ import (
 )
 
 func main() {
-  table := termtables.CreateTable()
+  table := tablewriter.CreateTable()
 
   table.AddHeaders("Name", "Age")
   table.AddRow("John", "30")
